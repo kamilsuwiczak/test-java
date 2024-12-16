@@ -14,7 +14,7 @@ public class WeatherApiClient extends ApiKey{
     public JsonNode data;
     protected String apiKey;
     protected void setApiUrl(String key){
-        apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=52.3&lon=16.56&appid=" + apiKey;
+        apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=52.3&lon=16.56&appid=" + key;
     }
     public void fetchWeatherData(){
          try {
