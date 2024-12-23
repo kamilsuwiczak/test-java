@@ -10,10 +10,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LocationApiClient extends ApiKey{
     protected String apiUrl;
-    ApiKey apiKey;
     public JsonNode data;
     public void setApiUrl(String city){
-        apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey.getApiKey();
+        apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
     }
     
     public void fetchLocationData(){

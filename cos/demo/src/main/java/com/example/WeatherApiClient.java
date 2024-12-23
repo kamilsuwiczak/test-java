@@ -12,9 +12,9 @@ import java.net.URL;
 public class WeatherApiClient extends ApiKey{
     protected String apiUrl;
     public JsonNode data;
-    protected String apiKey;
-    protected void setApiUrl(String key){
-        apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=52.3&lon=16.56&appid=" + key;
+    public double temp;
+    protected void setApiUrl(String lat, String lon){
+        apiUrl = "https://api.openweathermap.org/data/3.0/onecall?lat="+lat+"&lon="+lon+"&appid=" + apiKey;
     }
     public void fetchWeatherData(){
          try {
@@ -38,5 +38,8 @@ public class WeatherApiClient extends ApiKey{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void setTemp(double temp){
+        this.temp = temp;
     }
 }

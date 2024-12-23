@@ -9,20 +9,34 @@ package com.example;
 
 public class Main {
     public static void main(String[] args) {
-        ApiKey apiKey = new ApiKey();
-        apiKey.setApiKey("d3b005518fed37afe862aef7abbb0403");
-        WeatherApiClient WeatherApiClient = new WeatherApiClient();
-        WeatherApiClient.setApiUrl(apiKey.getApiKey());
+
+        LocationApiClient locationApiClient = new LocationApiClient();
+        locationApiClient.setApiKey("");
+        locationApiClient.setApiUrl("Zielona_Gora");
+        locationApiClient.fetchLocationData();
+        System.out.println(locationApiClient.data);
+        String y = locationApiClient.data.get(0).get("lat").toString();
+        System.out.println(y);
+        
+        WeatherApiClient weatherApiClient = new WeatherApiClient();
+        weatherApiClient.setApiKey("");
+        weatherApiClient.setApiUrl(locationApiClient.data.get(0).get("lat").toString(), locationApiClient.data.get(0).get("lon").toString());
         // WeatherApiClient.setApiUrl();
-        WeatherApiClient.fetchWeatherData();
+        weatherApiClient.fetchWeatherData();
         
         
-        System.out.println(WeatherApiClient.data);
+        System.out.println(weatherApiClient.data);
         // float x;
-        double x= WeatherApiClient.data.get("current").get("temp").asDouble();
+        double x= weatherApiClient.data.get("current").get("weather").asDouble();
         System.out.println(x);
-        x=x-270.15;
-        System.out.println(x);
+        System.out.println(weatherApiClient.data.get("current").get("weather").get(0).get("main"));
+        weatherApiClient.setTemp(weatherApiClient.data.get("current").get("temp").asDouble());
+        System.out.println(weatherApiClient.temp);
+
+        // x=x-270.15;
+        // System.out.println(x);
+
+
         
 
 
